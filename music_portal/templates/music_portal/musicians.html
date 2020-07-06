@@ -1,94 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Music portal</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div class="wrapper">
-		<header>
-			<nav>
-				<section><a href="index.html" class="header-link">Music Portal</a></section>
-				<section><a href="musicians.html" class="header-link">Musicians</a></section>
-				<section><a href="songs.html" class="header-link">Songs</a></section>
-				<section><a href="musical-instruments.html" class="header-link">Musical Instruments</a></section>
-				<section><a href="news.html" class="header-link">News</a></section>	
-			</nav>
-		</header>
-		<div class="container">
+{% extends "music_portal/base.html" %}
 
-			<article class="musician-article">
-				<div class="musician-card">
-					<div class="musician-card-image">
-						<img src="img/Beethoven.jpg" width="275" height="280">
-					</div>
-					<h3><span class="musician-card-title">Beethoven</span></h3>
-					<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-					<h5><span class="musician-card-day-of-life">December 17, 1770 - March 26, 1827 </span></h5>
-				</div>
-				<div class="musician-card">
-					<div class="musician-card-image">
-						<img src="img/Lindemann.jpg" width="275" height="280">
-					</div>
-					<h3><span class="musician-card-title">Till Lindemann</span></h3>
-					<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-					<h5><span class="musician-card-day-of-life">January 4, 1963 - the present</span></h5>
-				</div>
-				<div class="musician-card">
-					<div class="musician-card-image">
-						<img src="img/Tankian.jpg" width="275" height="280">
-					</div>
-					<h3><span class="musician-card-title">Serg Tankian</span></h3>
-					<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-					<h5><span class="musician-card-day-of-life">August 21, 1967 - the present </span></h5>
-				</div>
-				<div class="musician-card">
-					<div class="musician-card-image">
-						<img src="img/Chester.jpg" width="275" height="280">
-					</div>
-					<h3><span class="musician-card-title">Chester Bennington</span></h3>
-					<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-					<h5><span class="musician-card-day-of-life">March 20, 1976 - July 20, 2017 </span></h5>
-				</div>
-				<div class="musician-card">
-					<div class="musician-card-image">
-						<img src="img/Sheeran.jpeg" width="275" height="280">
-					</div>
-					<h3><span class="musician-card-title">Ed Sheeran</span></h3>
-					<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-					<h5><span class="musician-card-day-of-life">February 17, 1991 - the present </span></h5>
-				</div>
-			</article>
 
-			<aside>
-				<div class="news-block">
-					<h4>Nothing happen</h4>
-					<p>Of course</p>
-				</div>
-				<div class="poll-block">
-					<form>
-						<p>Who is the best?</p>
-						<p><input type="radio">Bakh</p>
-						<p><input type="radio">Swift</p>
-						<p><input type="radio">Rammstein</p>
-						<input type="submit" value="Submit">
-					</form>
-				</div>
-				<div class="ad-block">
-					<img src="img/ad.png">
-				</div>
-			</aside>
+{% block content %}
+	<article class="musician-article">
+		<div class="musician-card">
+			<div class="musician-card-image">
+				<img src="img/Beethoven.jpg" width="275" height="280">
+			</div>
+			<h3><span class="musician-card-title">Beethoven</span></h3>
+			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
+			<h5><span class="musician-card-day-of-life">December 17, 1770 - March 26, 1827 </span></h5>
 		</div>
-
-		<footer>
-			<section><a href="index.html" class="footer-link">Music Portal</a></section>
-			<section><a href="about-us.html" class="footer-link">About us</a></section>
-			<section><a href="contacts.html" class="footer-link">Contacts</a></section>
-			<section><a href="user-terms.html" class="footer-link">User terms</a></section>
-			<section><a href="privacy-policy.html" class="footer-link">Privacy policy</a></section>	
-		</footer>
-		
-	</div>
-</body>
-</html>
+		<div class="musician-card">
+			<div class="musician-card-image">
+				<img src="img/Lindemann.jpg" width="275" height="280">
+			</div>
+			<h3><span class="musician-card-title">Till Lindemann</span></h3>
+			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
+			<h5><span class="musician-card-day-of-life">January 4, 1963 - the present</span></h5>
+		</div>
+		<div class="musician-card">
+			<div class="musician-card-image">
+				<img src="img/Tankian.jpg" width="275" height="280">
+			</div>
+			<h3><span class="musician-card-title">Serg Tankian</span></h3>
+			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
+			<h5><span class="musician-card-day-of-life">August 21, 1967 - the present </span></h5>
+		</div>
+		<div class="musician-card">
+			<div class="musician-card-image">
+				<img src="img/Chester.jpg" width="275" height="280">
+			</div>
+			<h3><span class="musician-card-title">Chester Bennington</span></h3>
+			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
+			<h5><span class="musician-card-day-of-life">March 20, 1976 - July 20, 2017 </span></h5>
+		</div>
+		<div class="musician-card">
+			<div class="musician-card-image">
+				<img src="img/Sheeran.jpeg" width="275" height="280">
+			</div>
+			<h3><span class="musician-card-title">Ed Sheeran</span></h3>
+			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
+			<h5><span class="musician-card-day-of-life">February 17, 1991 - the present </span></h5>
+		</div>
+	</article>
+{% endblock content %}
