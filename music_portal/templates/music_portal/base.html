@@ -14,7 +14,7 @@
 			<nav>
 				<section><a href="{% url 'main_page_url' %}" class="header-link">Music Portal</a></section>
 				<section><a href="{% url 'musicians_page_url' %}" class="header-link">Musicians</a></section>
-				<section><a href="songs.html" class="header-link">Songs</a></section>
+				<section><a href="{% url 'songs_page_url' %}" class="header-link">Songs</a></section>
 				<section><a href="{% url 'musical_instruments_page_url' %}" class="header-link">Musical Instruments</a></section>
 				<section><a href="{% url 'news_page_url' %}" class="header-link">News</a></section>	
 			</nav>
@@ -46,10 +46,10 @@
 
 		<footer>
 			<section><a href="{% url 'main_page_url' %}" class="footer-link">Music Portal</a></section>
-			<section><a href="about-us.html" class="footer-link">About us</a></section>
+			<section><a href="{% url 'about_page_url' %}" class="footer-link">About us</a></section>
 			<section><a href="{% url 'contacts_url' %}" class="footer-link">Contacts</a></section>
-			<section><a href="user-terms.html" class="footer-link">User terms</a></section>
-			<section><a href="privacy-policy.html" class="footer-link">Privacy policy</a></section>	
+			<section><a href="{% url 'user_terms_page_url' %}" class="footer-link">User terms</a></section>
+			<section><a href="{% url 'privacy_page_url' %}" class="footer-link">Privacy policy</a></section>	
 		</footer>
 
 	</div>
