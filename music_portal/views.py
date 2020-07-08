@@ -17,6 +17,11 @@ class MainPage(View):
         return render(request, 'music_portal/index.html')
 
 
+class MusicalInstrumentDetail(View):
+    def get(self, request):
+        return render(request, 'music_portal/musical_instrument_detail.html')
+
+
 class MusicalInstrumentList(View):
     def get(self, request):
         return render(request, 'music_portal/musical_instruments.html')

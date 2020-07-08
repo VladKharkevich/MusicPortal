@@ -109,6 +109,7 @@ footer{
 }
 
 .musician-card{
+	display: block;
 	width: 300px;
 	height: 500px;
 	background-color: #ccddee;
@@ -116,6 +117,8 @@ footer{
 	padding-top: 12px;
 	padding-bottom: 10px;
 	position: relative;
+	text-decoration: none;
+	color: black;
 }
 
 .musician-card-image{
@@ -174,6 +177,65 @@ footer{
 
 .news-card-likes{
 	color: gray;
-	content: '\e82d';
 	margin-bottom: 5px; 
+}
+
+/* contacts.html */
+
+.contact-article{
+	display: flex;
+	margin: 8px;
+	justify-content: center;
+}
+
+.fds{
+	color: red;
+}
+
+.map{
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+#map-label{
+	display: block;
+	text-align: center;	
+	font-size: 24px;
+}
+
+.mail-link{
+	text-decoration: none;
+}
+
+/* musical_instrument_detail */
+
+.musician-header{
+	display: flex;
+	flex-direction: row;
+	margin: 15px;
+}
+
+.musician-table-detail{
+	border-spacing: 0px;
+	margin-left: 60px;
+}
+
+.table-key{
+	border: 1px solid black;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 3px 5px 3px 5px;
+}
+
+.table-value{
+	border: 1px solid black;
+	font-size: 18px;
+	font-style: italic;
+	padding: 3px 5px 3px 5px;
+	text-align: right;
+}
+
+.musician-description{
+	text-align: justify;
+	margin: 15px;
 }
