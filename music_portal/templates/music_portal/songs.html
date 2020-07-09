@@ -1,1 +1,29 @@
 {% extends "music_portal/base.html" %}
+{% load static %}
+
+{% block content %}
+	<article>
+		<h1 style="text-align: center;">Songs</h1>
+		<div class="song-card">
+			<div class="song-description">
+				<h4><p class='song-label'>SOAD</p></h4>
+				<p class='song-label'>Jet Pilot</p>
+			</div>
+			<audio controls="controls" src="{% static 'aud/jet-pilot.mp3' %}" class="song"></audio>
+		</div>
+		<div class="song-card">
+			<div class="song-description">
+				<h4><p class='song-label'>SOAD</p></h4>
+				<p class='song-label'>Aerials</p>
+			</div>
+			<audio controls="controls" src="{% static 'aud/aerials.mp3' %}" class="song"></audio>
+		</div>
+		<div class="song-card">
+			<div class="song-description">
+				<h4><p class='song-label'>Rammstein</p></h4>
+				<p class='song-label'>Sonne</p>
+			</div>
+			<audio controls="controls" src="{% static 'aud/sonne.mp3' %}" class="song"></audio>
+		</div>
+	</article>
+{% endblock content %}

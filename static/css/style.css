@@ -239,3 +239,31 @@ footer{
 	text-align: justify;
 	margin: 15px;
 }
+
+/* songs.html */
+
+.song-card{
+	margin: 10px;
+	border: 2px solid gainsboro;
+	border-radius: 40px; 
+	padding: 5px;	
+	display: flex;
+}
+
+.song-description{
+	padding: 8px;
+	margin: 0 auto;
+	overflow: hidden; 
+}
+
+.song{
+	width: 400px;
+}
+
+.song:focus{
+	outline: none;
+}
+
+.song-label{
+	text-align: center;
+}
