@@ -4,40 +4,14 @@
 
 {% block content %}
 	<article class="musician-article">
-		<a href="{% url 'musical_instruments_detail_url' %}" class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/cello.jpeg' %}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Cello</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-		</a>
-		<a href="{% url 'musical_instruments_detail_url' %}" class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/flute.jpeg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Flute</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-		</a>
-		<a href="{% url 'musical_instruments_detail_url' %}" class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/piano.jpg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Piano</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-		</a>
-		<a href="{% url 'musical_instruments_detail_url' %}" class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/trumpet.jpeg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Trumpet</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-		</a>
-		<a href="{% url 'musical_instruments_detail_url' %}" class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/violin.jpeg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Violin</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-		</a>
+		{% for musical_instrument in musical_instruments %}
+			<a href="{{ musical_instrument.get_absolute_url }}" class="musician-card">
+				<div class="musician-card-image">
+					<img src="{{ musical_instrument.photo.url }}" width="275" height="280">
+				</div>
+				<h3><span class="musician-card-title">{{ musical_instrument.name }}</span></h3>
+				<span class="musician-card-description">{{ musical_instrument.description|truncatewords:50 }}</span>
+			</a>
+		{% endfor %}
 	</article>
 {% endblock content %}

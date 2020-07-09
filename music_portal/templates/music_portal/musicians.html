@@ -3,45 +3,21 @@
 
 {% block content %}
 	<article class="musician-article">
-		<div class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/Beethoven.jpg' %}" width="275" height="280">
+		{% for musician in musicians %}
+			<div class="musician-card">
+				<div class="musician-card-image">
+					<img src="{{ musician.photo.url }}" width="275" height="280">
+				</div>
+				<h3><span class="musician-card-title">{{ musician.first_name }} {{ musician.last_name }}</span></h3>
+				<span class="musician-card-description">{{ musician.biography|truncatewords:50 }}</span>
+				<h5><span class="musician-card-day-of-life">  
+					{{ musician.date_of_birth }} - 
+				{% if musician.date_of_death > today.date %}
+					the present
+				{% else %}	
+					{{ musician.date_of_death }}
+				{% endif %} </span></h5>
 			</div>
-			<h3><span class="musician-card-title">Beethoven</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-			<h5><span class="musician-card-day-of-life">December 17, 1770 - March 26, 1827 </span></h5>
-		</div>
-		<div class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/Lindemann.jpg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Till Lindemann</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-			<h5><span class="musician-card-day-of-life">January 4, 1963 - the present</span></h5>
-		</div>
-		<div class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/Tankian.jpg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Serg Tankian</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-			<h5><span class="musician-card-day-of-life">August 21, 1967 - the present </span></h5>
-		</div>
-		<div class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/Chester.jpg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Chester Bennington</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-			<h5><span class="musician-card-day-of-life">March 20, 1976 - July 20, 2017 </span></h5>
-		</div>
-		<div class="musician-card">
-			<div class="musician-card-image">
-				<img src="{% static 'img/Sheeran.jpeg'%}" width="275" height="280">
-			</div>
-			<h3><span class="musician-card-title">Ed Sheeran</span></h3>
-			<span class="musician-card-description">&nbsp&nbsp&nbsp He was the best musician that I know. Of course I am. Because I'm Batman. Because I'm Batman. Mysterious video. Because I'm Batman. It's a batsymbol. When angels diserve to die in my self-righteous suicide. I cry when angels diserve to die</span>
-			<h5><span class="musician-card-day-of-life">February 17, 1991 - the present </span></h5>
-		</div>
+		{% endfor %}
 	</article>
 {% endblock content %}

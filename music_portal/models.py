@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 from django.contrib.postgres.fields import JSONField
 
 
@@ -39,6 +40,9 @@ class MusicalInstrument(models.Model):
     type_of_instrument = models.CharField(max_length=1, choices=TYPES_OF_INSTRUMENT, db_index=True)
     description = models.TextField(null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('musical_instruments_detail_url', kwargs={'slug': self.slug})
+
     def __str__(self):
         return self.name
 
@@ -61,13 +65,13 @@ class Song(models.Model):
         return self.title
 
 
-class Mucisian(models.Model):
+class Musician(models.Model):
     first_name = models.CharField(max_length=100, db_index=True)
     last_name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, unique=True)
     biography = models.TextField(null=True, blank=True)
     date_of_birth = models.DateField()
-    date_of_death = models.DateField()
+    date_of_death = models.DateField(null=True)
     photo = models.ImageField(upload_to='musician_photos')
     songs = models.ManyToManyField(Song)
 
@@ -80,9 +84,9 @@ class Band(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     biography = models.TextField(null=True, blank=True)
     date_of_creation = models.DateField()
-    date_of_breakup = models.DateField()
+    date_of_breakup = models.DateField(null=True)
     photo = models.ImageField(upload_to='band_photos')
-    members = models.ManyToManyField(Mucisian)
+    members = models.ManyToManyField(Musician)
     songs = models.ManyToManyField(Song)
 
     def __str__(self):

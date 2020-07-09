@@ -2,53 +2,23 @@
 
 {% block content %}
 	<article>
-		<div class="news-card">
-			<div class="news-card-addition-info">
-				<p>Admin</p>
-				<p>&nbsp-&nbsp</p>
-				<p>January 4, 1963, 11:33pm</p>
+		{% for post in news %}
+			<div class="news-card">
+				<div class="news-card-addition-info">
+					<p>Admin</p>
+					<p>&nbsp-&nbsp</p>
+					<p>{{ post.published }}</p>
+				</div>
+				<div class="news-card-title">
+					<h2><p> {{ post.title }}</p></h2>
+				</div>
+				<div class="news-card-description">
+					<p> {{ post.content }}</p>
+				</div>
+				<div class="news-card-likes">
+					<p>&#128077; {{ post.likes }} &#128078; {{ post.dislikes }} </p>
+				</div>
 			</div>
-			<div class="news-card-title">
-				<h2><p>How to buy the guitar</p></h2>
-			</div>
-			<div class="news-card-description">
-				<p>I'm the first. I'm the second. I'm the third. I'm the fourth. I'm the fifth. I'm the sixth. I'm the seventh. I'm the eightth. I'm the nineth. I'm the tenth</p>
-			</div>
-			<div class="news-card-likes">
-				<p>&#128077; 43 &#128078; 2 </p>
-			</div>
-		</div>
-		<div class="news-card">
-			<div class="news-card-addition-info">
-				<p>Admin</p>
-				<p>&nbsp-&nbsp</p>
-				<p>January 31, 1991, 18:52am</p>
-			</div>
-			<div class="news-card-title">
-				<h2><p>How to buy the guitar</p></h2>
-			</div>
-			<div class="news-card-description">
-				<p>I'm the first. I'm the second. I'm the third. I'm the fourth. I'm the fifth. I'm the sixth.</p>
-			</div>
-			<div class="news-card-likes">
-				<p>&#128077; 43 &#128078; 2 </p>
-			</div>
-		</div>
-		<div class="news-card">
-			<div class="news-card-addition-info">
-				<p>Admin</p>
-				<p>&nbsp-&nbsp</p>
-				<p>January 24, 1963, 1:33pm</p>
-			</div>
-			<div class="news-card-title">
-				<h2><p>How to buy the guitar</p></h2>
-			</div>
-			<div class="news-card-description">
-				<p>I'm the first. I'm the second. I'm the third. I'm the fourth. I'm the fifth. I'm the sixth. I'm the seventh. I'm the eightth. I'm the nineth. I'm the tenth</p>
-			</div>
-			<div class="news-card-likes">
-				<p>&#128077; 43 &#128078; 2 </p>
-			</div>
-		</div>
+		{% endfor %}
 	</article>
 {% endblock content %}
