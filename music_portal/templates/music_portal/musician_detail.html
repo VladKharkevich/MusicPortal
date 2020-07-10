@@ -1,1 +1,56 @@
 {% extends "music_portal/base.html" %}
+
+{% block content %}
+	<article>
+		<div class="musician-header">
+			<div class="musician-photo-detail">
+				<img src="{{ musician.photo.url }}" width="400" height="350">
+			</div>
+			<div class="musician-main-info-detail">
+				<table class="musician-table-detail">
+					<tr>
+						<td class="table-key">First Name</td>
+						<td class="table-value">{{ musician.first_name }}</td>
+					</tr>
+					<tr>
+						<td class="table-key">Last Name</td>
+						<td class="table-value">{{ musician.last_name }}</td>
+					</tr>
+					<tr>
+						<td class="table-key">Date Of Birth</td>
+						<td class="table-value">{{ musician.date_of_birth }}</td>
+					</tr>
+					<tr>
+						<td class="table-key">Date Of Death</td>
+						<td class="table-value">
+							{% if musician.date_of_death %}
+								{{ musician.date_of_death }}
+							{% else %}	
+								still alive
+							{% endif %}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="musician-description">
+			<span>{{ musician.biography }}</span>
+		</div>
+		<br>
+		<h1><p style="text-align: center;">Songs of this human</p></h1>
+		<br>
+		{% for song in musician.songs.all %}
+			<div class="song-card">
+				<div class="song-description">
+					{% for band in song.band_set.all %}
+						<h4><p class='song-label'>
+							{{ band }}
+						</p></h4>
+					{% endfor %}
+					<p class='song-label'>{{ song.title }}</p>
+				</div>
+				<audio controls="controls" src="{{ song.songfile.url }}" class="song"></audio>
+			</div>
+		{% endfor %}
+	</article>
+{% endblock content %}

@@ -41,7 +41,7 @@ class MusicalInstrument(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def get_absolute_url(self):
-        return reverse('musical_instruments_detail_url', kwargs={'slug': self.slug})
+        return reverse('musical_instrument_detail_url', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.name
@@ -58,7 +58,7 @@ class Song(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(unique=True)
     songfile = models.FileField(upload_to='song_audio')
-    year_of_creation = models.DateField()
+    year_of_creation = models.PositiveSmallIntegerField(default=2020)
     album = models.ForeignKey(Album, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
@@ -70,10 +70,13 @@ class Musician(models.Model):
     last_name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, unique=True)
     biography = models.TextField(null=True, blank=True)
-    date_of_birth = models.DateField()
-    date_of_death = models.DateField(null=True)
-    photo = models.ImageField(upload_to='musician_photos')
-    songs = models.ManyToManyField(Song)
+    date_of_birth = models.DateField(null=True)
+    date_of_death = models.DateField(blank=True, null=True)
+    photo = models.ImageField(upload_to='musician_photos', blank=True)
+    songs = models.ManyToManyField(Song, related_name='musicians')
+
+    def get_absolute_url(self):
+        return reverse('musician_detail_url', kwargs={'slug': self.slug})
 
     def __str__(self):
         return '{} {}'.format(self.last_name, self.first_name)
@@ -83,11 +86,11 @@ class Band(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, unique=True)
     biography = models.TextField(null=True, blank=True)
-    date_of_creation = models.DateField()
-    date_of_breakup = models.DateField(null=True)
-    photo = models.ImageField(upload_to='band_photos')
-    members = models.ManyToManyField(Musician)
-    songs = models.ManyToManyField(Song)
+    date_of_creation = models.PositiveSmallIntegerField(default=2020)
+    date_of_breakup = models.PositiveSmallIntegerField(blank=True, null=True)
+    photo = models.ImageField(upload_to='band_photos', blank=True)
+    members = models.ManyToManyField(Musician, related_name='bands')
+    songs = models.ManyToManyField(Song, related_name='bands', blank=True)
 
     def __str__(self):
         return self.title

@@ -1,6 +1,9 @@
 {% extends "music_portal/base.html" %}
 
+{% load static %}
+
 {% block content %}
+	
 	<article>
 		{% for post in news %}
 			<div class="news-card">
@@ -16,7 +19,10 @@
 					<p> {{ post.content }}</p>
 				</div>
 				<div class="news-card-likes">
-					<p>&#128077; {{ post.likes }} &#128078; {{ post.dislikes }} </p>
+					<span class="symbol-of-like">&#128077;</span>
+					<span class="count-of-likes">{{ post.likes }}</span>  
+					<span class="symbol-of-dislike">&#128078;</span> 
+					<span class="count-of-dislikes">{{ post.dislikes }} </span>
 				</div>
 			</div>
 		{% endfor %}
