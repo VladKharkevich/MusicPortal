@@ -28,7 +28,7 @@ section{
 	margin: auto;
 }
 
-.header-link{
+.nav-link{
 	color: black;
 	text-decoration: none;
 	margin: 0px 40px;
@@ -76,15 +76,15 @@ footer{
 }
 
 
-/* ndex.html */
+/* index.html */
 
-.best-block{
+.advantages-block{
 	text-align: center;
 	padding: 100px;
 	margin: 5px;
 }
 
-.best-text{
+.advantages-text{
 	font-size: 40px;
 }
 
@@ -100,49 +100,55 @@ footer{
 	background-color: pink;
 }
 
-/* musicians.html */
+/* musicians.html, musical_instruments.html */
 
-.musician-article{
+.music-content-article{
 	display: flex;
 	flex-wrap: wrap;
 	margin: 8px;
 }
 
-.musician-card{
+/* vertical card classes */
+
+.vertical-card{
 	display: block;
 	width: 300px;
 	height: 500px;
 	background-color: #ccddee;
 	margin: 5px;
-	padding-top: 12px;
-	padding-bottom: 10px;
+	padding: 10px 5px 12px 5px;
 	position: relative;
 	text-decoration: none;
 	color: black;
 }
 
-.musician-card-image{
+.vertical-card-image{
 	overflow: hidden;
-	width: 275px;
 	height: 280px;
 	margin: 0 auto;
 }
 
-.musician-card-title{
+.vertical-card-image img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.vertical-card-title{
 	display: block;
 	font-size: 24px;
 	margin-top: 3px;
 	text-align: center;
 }
 
-.musician-card-description{
+.vertical-card-description{
 	display: block;
 	text-align: justify;
 	font-size: 14px;
 	margin: 7px 13px 5px 13px;
 }
 
-.musician-card-day-of-life{
+.vertical-card-days-of-life{
 	display: block;
 	font-size: 15px;
 	font-family: "Times New Roman", Times, serif;
@@ -163,7 +169,7 @@ footer{
 	border-radius: 15px;
 }
 
-.news-card-addition-info{
+.news-card-meta-info{
 	display: flex;
 	color: gray;
 	margin-top: 3px;
@@ -182,14 +188,10 @@ footer{
 
 /* contacts.html */
 
-.contact-article{
+.contacts-article{
 	display: flex;
 	margin: 8px;
 	justify-content: center;
-}
-
-.fds{
-	color: red;
 }
 
 .map{
@@ -197,7 +199,7 @@ footer{
 	margin-right: 10px;
 }
 
-#map-label{
+.map-label{
 	display: block;
 	text-align: center;	
 	font-size: 24px;
@@ -209,13 +211,13 @@ footer{
 
 /* musical_instrument_detail */
 
-.musician-header{
+.music-header-detail{
 	display: flex;
 	flex-direction: row;
 	margin: 15px;
 }
 
-.musician-table-detail{
+.music-table-detail{
 	border-spacing: 0px;
 	margin-left: 60px;
 }
@@ -235,7 +237,7 @@ footer{
 	text-align: right;
 }
 
-.musician-description{
+.music-description-detail{
 	text-align: justify;
 	margin: 15px;
 }

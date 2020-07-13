@@ -3,11 +3,11 @@
 {% load static %}
 
 {% block content %}
-	
 	<article>
 		{% for post in news %}
 			<div class="news-card">
-				<div class="news-card-addition-info">
+				<!-- Information about creator of post and date of publication-->
+				<div class="news-card-meta-info">
 					<p>Admin</p>
 					<p>&nbsp-&nbsp</p>
 					<p>{{ post.published }}</p>
@@ -18,6 +18,7 @@
 				<div class="news-card-description">
 					<p> {{ post.content }}</p>
 				</div>
+				<!-- likes and dislikes :) -->
 				<div class="news-card-likes">
 					<span class="symbol-of-like">&#128077;</span>
 					<span class="count-of-likes">{{ post.likes }}</span>  

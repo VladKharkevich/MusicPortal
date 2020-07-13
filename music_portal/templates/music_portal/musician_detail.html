@@ -2,12 +2,12 @@
 
 {% block content %}
 	<article>
-		<div class="musician-header">
-			<div class="musician-photo-detail">
+		<div class="music-header-detail">
+			<div class="music-photo-detail">
 				<img src="{{ musician.photo.url }}" width="400" height="350">
 			</div>
-			<div class="musician-main-info-detail">
-				<table class="musician-table-detail">
+			<div class="music-main-info-detail">
+				<table class="music-table-detail">
 					<tr>
 						<td class="table-key">First Name</td>
 						<td class="table-value">{{ musician.first_name }}</td>
@@ -33,24 +33,14 @@
 				</table>
 			</div>
 		</div>
-		<div class="musician-description">
+		<div class="music-description-detail">
 			<span>{{ musician.biography }}</span>
 		</div>
 		<br>
 		<h1><p style="text-align: center;">Songs of this human</p></h1>
 		<br>
 		{% for song in musician.songs.all %}
-			<div class="song-card">
-				<div class="song-description">
-					{% for band in song.band_set.all %}
-						<h4><p class='song-label'>
-							{{ band }}
-						</p></h4>
-					{% endfor %}
-					<p class='song-label'>{{ song.title }}</p>
-				</div>
-				<audio controls="controls" src="{{ song.songfile.url }}" class="song"></audio>
-			</div>
+			{% include "music_portal/includes/song_card.html" %}
 		{% endfor %}
 	</article>
 {% endblock content %}

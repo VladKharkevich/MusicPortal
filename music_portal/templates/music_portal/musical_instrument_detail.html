@@ -2,12 +2,12 @@
 
 {% block content %}
 	<article>
-		<div class="musician-header">
-			<div class="musician-photo-detail">
+		<div class="music-header-detail">
+			<div class="music-photo-detail">
 				<img src="{{ MusicalInstrument.photo.url }}">
 			</div>
-			<div class="musician-main-info-detail">
-				<table class="musician-table-detail">
+			<div class="music-main-info-detail">
+				<table class="music-table-detail">
 					<tr>
 						<td class="table-key">Name</td>
 						<td class="table-value">{{ MusicalInstrument.name }}</td>
@@ -19,7 +19,7 @@
 				</table>
 			</div>
 		</div>
-		<div class="musician-description">
+		<div class="music-description-detail">
 			<span>{{ MusicalInstrument.description }}</span>
 		</div>
 	</article>

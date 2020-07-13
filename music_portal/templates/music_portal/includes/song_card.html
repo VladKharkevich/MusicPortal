@@ -1,0 +1,11 @@
+<div class="song-card">
+	<div class="song-description">
+		{% for band in song.bands.all %}
+			<h4><p class='song-label'>
+				{{ band }}
+			</p></h4>
+		{% endfor %}
+		<p class='song-label'>{{ song.title }}</p>
+	</div>
+	<audio controls="controls" src="{{ song.songfile.url }}" class="song"></audio>
+</div>

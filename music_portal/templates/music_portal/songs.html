@@ -4,17 +4,7 @@
 	<article>
 		<h1 style="text-align: center;">Songs</h1>
 		{% for song in songs %}
-			<div class="song-card">
-				<div class="song-description">
-					{% for band in song.band_set.all %}
-						<h4><p class='song-label'>
-							{{ band }}
-						</p></h4>
-					{% endfor %}
-					<p class='song-label'>{{ song.title }}</p>
-				</div>
-				<audio controls="controls" src="{{ song.songfile.url }}" class="song"></audio>
-			</div>
+			{% include "music_portal/includes/song_card.html" %}
 		{% endfor %}
 	</article>
 {% endblock content %}
