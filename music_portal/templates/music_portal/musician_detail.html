@@ -30,6 +30,16 @@
 							{% endif %}
 						</td>
 					</tr>
+					{% if musician.bands.all %}
+						<tr>
+							<td class="table-key">Bands</td>
+							<td class="table-value">
+								{% for band in musician.bands.all %}
+									{{ band }}
+								{% endfor %}
+							</td>
+						</tr>
+					{% endif %}
 				</table>
 			</div>
 		</div>
