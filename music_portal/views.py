@@ -3,12 +3,27 @@ from django.views.generic import View
 
 import datetime
 
-from .models import News, Musician, MusicalInstrument, Song
+from .models import News, Musician, MusicalInstrument, Song, Band
 
 
 class AboutPage(View):
     def get(self, request):
         return render(request, 'music_portal/about.html')
+
+
+class BandList(View):
+    def get(self, request):
+        bands = Band.objects.all()
+        today = datetime.datetime.now()
+        return render(request, 'music_portal/bands.html', context={'bands': bands,
+                                                                   'today': today})
+
+
+class BandDetail(View):
+    def get(self, request, slug):
+        obj = get_object_or_404(Band, slug__iexact=slug)
+        return render(request, 'music_portal/band_detail.html',
+                      context={Band.__name__.lower(): obj})
 
 
 class ContactPage(View):

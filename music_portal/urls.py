@@ -6,6 +6,8 @@ from .views import *
 urlpatterns = [
     path('', MainPage.as_view(), name='main_page_url'),
     path('about/', AboutPage.as_view(), name='about_page_url'),
+    path('bands/', BandList.as_view(), name='bands_url'),
+    path('bands/<str:slug>/', BandDetail.as_view(), name='band_detail_url'),
     path('contacts/', ContactPage.as_view(), name='contacts_url'),
     path('musical-instruments/', MusicalInstrumentList.as_view(),
          name='musical_instruments_page_url'),

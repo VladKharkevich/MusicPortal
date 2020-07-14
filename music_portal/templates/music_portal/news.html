@@ -19,11 +19,15 @@
 					<p> {{ post.content }}</p>
 				</div>
 				<!-- likes and dislikes :) -->
-				<div class="news-card-likes">
-					<span class="symbol-of-like">&#128077;</span>
-					<span class="count-of-likes">{{ post.likes }}</span>  
-					<span class="symbol-of-dislike">&#128078;</span> 
-					<span class="count-of-dislikes">{{ post.dislikes }} </span>
+				<div class="news-card-marks">
+					<div class="news-card-likes">
+						<span class="symbol-of-like">&#128077;</span>
+						<span class="count-of-likes">{{ post.likes }}</span>
+					</div>
+					<div class="news-card-dislikes"> 
+						<span class="symbol-of-dislike">&#128078;</span> 
+						<span class="count-of-dislikes">{{ post.dislikes }} </span>
+					</div> 
 				</div>
 			</div>
 		{% endfor %}

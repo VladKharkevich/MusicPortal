@@ -35,7 +35,7 @@
 							<td class="table-key">Bands</td>
 							<td class="table-value">
 								{% for band in musician.bands.all %}
-									{{ band }}
+									<a href="{{ band.get_absolute_url }}">{{ band }}</a>
 								{% endfor %}
 							</td>
 						</tr>

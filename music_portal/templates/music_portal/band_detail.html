@@ -1,0 +1,57 @@
+{% extends "music_portal/base.html" %}
+{% load static %}
+
+{% block content %}
+	<article>
+		<div class="music-header-detail">
+			<div class="music-photo-detail">
+				<img src="
+						{% if band.photo %}
+							{{ band.photo.url }}
+						{% else %}
+							{% static 'img/default.png' %}
+						{% endif %}
+					">
+			</div>
+			<div class="music-main-info-detail">
+				<table class="music-table-detail">
+					<tr>
+						<td class="table-key">Title</td>
+						<td class="table-value">{{ band.title }}</td>
+					</tr>
+					<tr>
+						<td class="table-key">Date Of Creation</td>
+						<td class="table-value">{{ band.date_of_creation }}</td>
+					</tr>
+					<tr>
+						<td class="table-key">Date Of Breakup</td>
+						<td class="table-value">
+							{% if band.date_of_breakup %}
+								{{ band.date_of_breakup }}
+							{% else %}	
+								still alive
+							{% endif %}
+						</td>
+					</tr>
+					<tr>
+						<td class="table-key">Members</td>
+						<td class="table-value">
+							{% for member in band.members.all %}
+								<a href="{{ member.get_absolute_url }}">{{ member }}</p>
+							{% endfor %}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="music-description-detail">
+			<span>{{ band.biography }}</span>
+		</div>
+		<br>
+		<h1><p style="text-align: center;">Songs</p></h1>
+		<br>
+		{% for song in band.songs.all %}
+			{% include "music_portal/includes/song_card.html" %}
+		{% endfor %}
+	</article>
+{% endblock content %}

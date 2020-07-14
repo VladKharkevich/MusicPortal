@@ -79,7 +79,7 @@ class Musician(models.Model):
         return reverse('musician_detail_url', kwargs={'slug': self.slug})
 
     def __str__(self):
-        return '{} {}'.format(self.last_name, self.first_name)
+        return '{} {}'.format(self.first_name, self.last_name)
 
 
 class Band(models.Model):
@@ -91,6 +91,9 @@ class Band(models.Model):
     photo = models.ImageField(upload_to='band_photos', blank=True)
     members = models.ManyToManyField(Musician, related_name='bands')
     songs = models.ManyToManyField(Song, related_name='bands', blank=True)
+
+    def get_absolute_url(self):
+        return reverse('band_detail_url', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title

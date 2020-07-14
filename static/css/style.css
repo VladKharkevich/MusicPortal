@@ -181,10 +181,21 @@ footer{
 	margin-bottom: 5px; 
 }
 
+.news-card-marks{
+	display: flex;
+}
+
 .news-card-likes{
+	color: gray;
+	margin-bottom: 5px;
+	margin-right: 5px;  
+}
+
+.news-card-dislikes{
 	color: gray;
 	margin-bottom: 5px; 
 }
+
 
 /* contacts.html */
 
