@@ -1,5 +1,5 @@
-const symbolOfLike = document.querySelector('.news-card-likes')
-const symbolOfDislike = document.querySelector('.news-card-dislikes')
+const symbolOfLikeSet = document.querySelectorAll('.news-card-likes')
+const symbolOfDislikeSet = document.querySelectorAll('.news-card-dislikes')
 
 
 /*
@@ -24,10 +24,14 @@ function changeMark(clickedMark, nonClickedMark){
 	}
 }
 
-symbolOfLike.onclick = function() {
-	changeMark(symbolOfLike, symbolOfDislike);
+for (let i=0; i<symbolOfLikeSet.length; i++){
+	symbolOfLikeSet[i].onclick = function() {
+		changeMark(symbolOfLikeSet[i], symbolOfDislikeSet[i]);
+	}
 }
 
-symbolOfDislike.onclick = function() {
-	changeMark(symbolOfDislike, symbolOfLike)
+for (let i=0; i<symbolOfDislikeSet.length; i++){
+	symbolOfDislikeSet[i].onclick = function() {
+		changeMark(symbolOfDislikeSet[i], symbolOfLikeSet[i])
+	}
 }

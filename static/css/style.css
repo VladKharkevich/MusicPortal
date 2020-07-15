@@ -11,13 +11,17 @@ html,body{
 	height: 100%;
 }
 
+aside{
+	width: 180px;
+}
+
 .wrapper{
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
 }
 
-nav{
+.header-nav{
 	display: flex;
 	background-color: lime;
 	padding: 5px 20px;
@@ -73,6 +77,41 @@ footer{
 	text-decoration: none;
 	margin: 0px 40px;
 	font-size: 25px;
+}
+
+/* paginator classes */
+
+.paginator{
+	display: block;
+	margin: 20px 0 20px 0;
+}
+
+.paginator-list{
+	text-align: center;
+	font-size: 0;
+}
+
+.paginator-item{
+	display: inline-block;
+	border: 1px solid blue; 
+}
+
+.paginator-link{
+	padding: 5px 10px;
+	display: block;
+	text-decoration: none;
+	font-size: 22px;
+	color: blue;
+}
+
+.paginator-link:hover{
+	background: rgb(136, 185, 222);
+}
+
+.paginator-link.disabled{
+	color: gray;
+	pointer-events: none;
+	cursor: default;
 }
 
 

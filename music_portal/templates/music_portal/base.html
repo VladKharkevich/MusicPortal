@@ -11,7 +11,7 @@
 <body>
 	<div class="wrapper">
 		<header>
-			<nav>
+			<nav class="header-nav">
 				<section><a href="{% url 'main_page_url' %}" class="nav-link">Music Portal</a></section>
 				<section><a href="{% url 'musicians_page_url' %}" class="nav-link">Musicians</a></section>
 				<section><a href="{% url 'songs_page_url' %}" class="nav-link">Songs</a></section>
@@ -26,8 +26,13 @@
 
 			<aside>
 				<div class="news-block">
-					<h4>Nothing happen</h4>
-					<p>Of course</p>
+					<h4>Latest news</h4>
+					<div class="news-post">
+						{% for news_post in aside_news %}
+							<h5>{{ news_post.title }}</h5>
+							<p> {{ news_post.content|truncatewords:15 }} </p>
+						{% endfor %}
+					</div>
 				</div>
 				<div class="poll-block">
 					<form>
