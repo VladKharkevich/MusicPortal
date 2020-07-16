@@ -3,15 +3,18 @@
 {% load static %}
 
 {% block content %}
-	<article class="music-content-article">
-		{% for musical_instrument in musical_instruments %}
-			<a href="{{ musical_instrument.get_absolute_url }}" class="vertical-card">
-				<div class="vertical-card-image">
-					<img src="{{ musical_instrument.photo.url }}">
-				</div>
-				<h3><span class="vertical-card-title">{{ musical_instrument.name }}</span></h3>
-				<span class="vertical-card-description">{{ musical_instrument.description|truncatewords:50 }}</span>
-			</a>
-		{% endfor %}
+	<article class="article-with-paginator">
+		<div class="container-for-vertical-cards">
+			{% for musical_instrument in page_object %}
+				<a href="{{ musical_instrument.get_absolute_url }}" class="vertical-card">
+					<div class="vertical-card-image">
+						<img src="{{ musical_instrument.photo.url }}">
+					</div>
+					<h3><span class="vertical-card-title">{{ musical_instrument.name }}</span></h3>
+					<span class="vertical-card-description">{{ musical_instrument.description|truncatewords:50 }}</span>
+				</a>
+			{% endfor %}
+		</div>
+		{% include "music_portal/includes/paginator.html" %}
 	</article>
 {% endblock content %}

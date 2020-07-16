@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 
 from .models import News, Musician, MusicalInstrument, Song, Band
-from .utils import base_page_context
+from .utils import base_page_context, connecting_paginator
 
 
 class AboutPage(View):
@@ -51,7 +51,8 @@ class MusicalInstrumentList(View):
     def get(self, request):
         context = base_page_context()
         musical_instruments = MusicalInstrument.objects.all()
-        context['musical_instruments'] = musical_instruments
+        paginator_context = connecting_paginator(request, musical_instruments, 3)
+        context = {**context, **paginator_context}
         return render(request, 'music_portal/musical_instruments.html', context=context)
 
 
@@ -59,7 +60,8 @@ class MusicianList(View):
     def get(self, request):
         context = base_page_context()
         musicians = Musician.objects.all()
-        context['musicians'] = musicians
+        paginator_context = connecting_paginator(request, musicians, 3)
+        context = {**context, **paginator_context}
         return render(request, 'music_portal/musicians.html', context=context)
 
 
@@ -75,7 +77,9 @@ class NewsList(View):
     def get(self, request):
         context = base_page_context()
         news = News.objects.all()
-        context['news'] = news
+
+        paginator_context = connecting_paginator(request, news, 3)
+        context = {**context, **paginator_context}
         return render(request, 'music_portal/news.html', context=context)
 
 
@@ -89,7 +93,8 @@ class SongPage(View):
     def get(self, request):
         context = base_page_context()
         songs = Song.objects.all()
-        context['songs'] = songs
+        paginator_context = connecting_paginator(request, songs, 10)
+        context = {**context, **paginator_context}
         return render(request, 'music_portal/songs.html', context=context)
 
 

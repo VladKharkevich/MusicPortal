@@ -1,25 +1,37 @@
-<nav class="paginator">
-	<ul class="paginator-list">
-		<li class="paginator-item">
-			<a href="" class="paginator-link disabled">Previous</a>
-		</li>
-		<li class="paginator-item">
-			<a href="" class="paginator-link">1</a>
-		</li>
-		<li class="paginator-item">
-			<a href="" class="paginator-link">2</a>
-		</li>
-		<li class="paginator-item">
-			<a href="" class="paginator-link">3</a>
-		</li>
-		<li class="paginator-item">
-			<a href="" class="paginator-link">4</a>
-		</li>
-		<li class="paginator-item">
-			<a href="" class="paginator-link">5</a>
-		</li>
-		<li class="paginator-item">
-			<a href="" class="paginator-link">Next</a>
-		</li>
-	</ul>
-</nav>
+{% if is_paginated %}
+	<nav class="paginator">
+		<ul class="paginator-list">
+			<!-- url Previous -->
+			<li class="paginator-item">
+				<a href="{{ prev_url }}" class="paginator-link {% if not prev_url %}
+					disabled
+				{% endif %}">Previous</a>
+			</li>
+
+			<!-- url Previous -->
+			{% for page_number in page_object.paginator.page_range %}
+
+				<!-- if page number equals active page-->
+				{% if page_number == page_object.number %}
+					<li class="paginator-item">
+						<a href="?page={{ page_number }}" class="paginator-link active">{{ page_number }}</a>
+					</li>
+				
+				<!-- showing 2 previous pages, active page and 2 next pages-->
+				{% elif page_number > page_object.number|add:-3 and page_number < page_object.number|add:3 %}
+					<li class="paginator-item">
+						<a href="?page={{ page_number }}" class="paginator-link">{{ page_number }}</a>
+					</li>
+				{% endif %}
+
+			{% endfor %}
+
+			<!-- url Next -->
+			<li class="paginator-item">
+				<a href="{{ next_url }}" class="paginator-link {% if not next_url %}
+					disabled
+				{% endif %}">Next</a>
+			</li>
+		</ul>
+	</nav>
+{% endif %}

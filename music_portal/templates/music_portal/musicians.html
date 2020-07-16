@@ -2,22 +2,25 @@
 {% load static %}
 
 {% block content %}
-	<article class="music-content-article">
-		{% for musician in musicians %}
-			<a href="{{ musician.get_absolute_url }}" class="vertical-card">
-				<div class="vertical-card-image">
-					<img src="{{ musician.photo.url }}">
-				</div>
-				<h3><span class="vertical-card-title">{{ musician.first_name }} {{ musician.last_name }}</span></h3>
-				<span class="vertical-card-description">{{ musician.biography|truncatewords:50 }}</span>
-				<h5><span class="vertical-card-days-of-life">  
-					{{ musician.date_of_birth }} - 
-					{% if musician.date_of_death %}
-						{{ musician.date_of_death }}
-					{% else %}	
-						the present
-				{% endif %} </span></h5>
-			</a>
-		{% endfor %}
+	<article class="article-with-paginator">
+		<div class="container-for-vertical-cards">
+			{% for musician in page_object %}
+				<a href="{{ musician.get_absolute_url }}" class="vertical-card">
+					<div class="vertical-card-image">
+						<img src="{{ musician.photo.url }}">
+					</div>
+					<h3><span class="vertical-card-title">{{ musician.first_name }} {{ musician.last_name }}</span></h3>
+					<span class="vertical-card-description">{{ musician.biography|truncatewords:50 }}</span>
+					<h5><span class="vertical-card-days-of-life">  
+						{{ musician.date_of_birth }} - 
+						{% if musician.date_of_death %}
+							{{ musician.date_of_death }}
+						{% else %}	
+							the present
+					{% endif %} </span></h5>
+				</a>
+			{% endfor %}
+		</div>
+		{% include "music_portal/includes/paginator.html" %}
 	</article>
 {% endblock content %}

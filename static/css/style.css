@@ -114,6 +114,10 @@ footer{
 	cursor: default;
 }
 
+.paginator-link.active{
+	background: blue;
+	color: white;
+}
 
 /* index.html */
 
@@ -139,15 +143,23 @@ footer{
 	background-color: pink;
 }
 
-/* musicians.html, musical_instruments.html */
+/*articles if they have paginator */
 
-.music-content-article{
+.article-with-paginator{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+/* vertical card classes */
+
+
+.container-for-vertical-cards{
 	display: flex;
 	flex-wrap: wrap;
 	margin: 8px;
 }
-
-/* vertical card classes */
 
 .vertical-card{
 	display: block;

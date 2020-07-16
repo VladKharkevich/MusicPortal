@@ -3,34 +3,36 @@
 {% load static %}
 
 {% block content %}
-	<article>
-		{% for post in news %}
-			<div class="news-card">
-				<!-- Information about creator of post and date of publication-->
-				<div class="news-card-meta-info">
-					<p>Admin</p>
-					<p>&nbsp-&nbsp</p>
-					<p>{{ post.published }}</p>
-				</div>
-				<div class="news-card-title">
-					<h2><p> {{ post.title }}</p></h2>
-				</div>
-				<div class="news-card-description">
-					<p> {{ post.content }}</p>
-				</div>
-				<!-- likes and dislikes :) -->
-				<div class="news-card-marks">
-					<div class="news-card-likes">
-						<span class="symbol-of-like">&#128077;</span>
-						<span class="count-of-likes">{{ post.likes }}</span>
+	<article class="article-with-paginator">
+		<div>
+			{% for post in page_object %}
+				<div class="news-card">
+					<!-- Information about creator of post and date of publication-->
+					<div class="news-card-meta-info">
+						<p>Admin</p>
+						<p>&nbsp-&nbsp</p>
+						<p>{{ post.published }}</p>
 					</div>
-					<div class="news-card-dislikes"> 
-						<span class="symbol-of-dislike">&#128078;</span> 
-						<span class="count-of-dislikes">{{ post.dislikes }} </span>
-					</div> 
+					<div class="news-card-title">
+						<h2><p> {{ post.title }}</p></h2>
+					</div>
+					<div class="news-card-description">
+						<p> {{ post.content }}</p>
+					</div>
+					<!-- likes and dislikes :) -->
+					<div class="news-card-marks">
+						<div class="news-card-likes">
+							<span class="symbol-of-like">&#128077;</span>
+							<span class="count-of-likes">{{ post.likes }}</span>
+						</div>
+						<div class="news-card-dislikes"> 
+							<span class="symbol-of-dislike">&#128078;</span> 
+							<span class="count-of-dislikes">{{ post.dislikes }} </span>
+						</div> 
+					</div>
 				</div>
-			</div>
-		{% endfor %}
+			{% endfor %}
+		</div>
 		{% include "music_portal/includes/paginator.html" %}
 	</article>
 {% endblock content %}
