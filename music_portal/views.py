@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
+from django.views.generic import View
 
+from .forms import NewsCreateForm
 from .models import News, Musician, MusicalInstrument, Song, Band
 from .utils import AdvancedListView, AdvancedDetailView, AdvancedTemplateView
 
@@ -47,6 +49,22 @@ class MusicianList(AdvancedListView):
 class MusicianDetail(AdvancedDetailView):
     model = Musician
 
+
+class NewsCreate(View):
+    def get(self, request):
+        form = NewsCreateForm()
+        return render(request, 'music_portal/news_create.html', context={'form': form})
+
+    def post(self, request):
+        bound_form = NewsCreateForm(request.POST)
+        if bound_form.is_valid():
+            new_news = bound_form.save()
+            return redirect(new_news)
+        return render(request, 'music_portal/news_create.html', context={'form': bound_form})
+
+
+class NewsDetail(AdvancedDetailView):
+    model = News
 
 class NewsList(AdvancedListView):
     template_name = 'music_portal/news.html'

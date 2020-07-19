@@ -210,6 +210,68 @@ footer{
 	text-align: center;
 }
 
+
+/* forms */
+
+.form-container{
+	margin: 8px;
+}
+
+.form-field-label{
+	display: block;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 3px; 
+}
+
+.form-component{
+	margin: 12px 6px; 
+}
+
+.form-textinput{
+	width: calc(100% - 6px);
+	height: 24px;
+	font-size: 21px;
+	padding-left: 2px; 
+}
+
+.form-textinput:focus{
+	outline: none !important;
+	border: 1px solid blue;
+	box-shadow: 0px 1px 5px #719ECE;
+}
+
+.form-textarea{
+	font-size: 21px;
+	padding-left: 2px;
+	max-width: 800px;
+	min-width: 270px; 
+}
+
+.form-textarea:focus{
+	outline: none !important;
+	border: 1px solid blue;
+	box-shadow: 0px 1px 5px #719ECE;
+}
+
+.submit-form{
+	display: block;
+	background-color: blue;
+	margin: 0 auto;
+	height: 40px;
+	width: 115px;
+	color: white;
+	font-weight: bold;
+	font-size: 22px;
+	border: 0px solid blue;
+	border-radius: 20px;
+	outline: none; 
+}
+
+.submit-form:hover{
+	cursor: pointer;
+}
+
 /* news.html */
 
 .news-card{
@@ -234,6 +296,10 @@ footer{
 
 .news-card-marks{
 	display: flex;
+}
+
+.news-card-marks:hover{
+	cursor: pointer;
 }
 
 .news-card-likes{

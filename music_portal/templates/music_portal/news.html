@@ -14,7 +14,7 @@
 						<p>{{ post.published }}</p>
 					</div>
 					<div class="news-card-title">
-						<h2><p> {{ post.title }}</p></h2>
+						<h2><a href="{{ post.get_absolute_url }}" style="text-decoration: none;"> {{ post.title }}</a></h2>
 					</div>
 					<div class="news-card-description">
 						<p> {{ post.content }}</p>

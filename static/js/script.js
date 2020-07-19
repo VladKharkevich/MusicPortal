@@ -24,13 +24,13 @@ function changeMark(clickedMark, nonClickedMark){
 	}
 }
 
-for (let i=0; i<symbolOfLikeSet.length; i++){
+for (let i = 0; i < symbolOfLikeSet.length; i++){
 	symbolOfLikeSet[i].onclick = function() {
 		changeMark(symbolOfLikeSet[i], symbolOfDislikeSet[i]);
 	}
 }
 
-for (let i=0; i<symbolOfDislikeSet.length; i++){
+for (let i = 0; i < symbolOfDislikeSet.length; i++){
 	symbolOfDislikeSet[i].onclick = function() {
 		changeMark(symbolOfDislikeSet[i], symbolOfLikeSet[i])
 	}

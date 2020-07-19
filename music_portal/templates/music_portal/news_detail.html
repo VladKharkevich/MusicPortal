@@ -1,1 +1,12 @@
 {% extends "music_portal/base.html" %}
+
+{% block content %}
+	<article>
+		<div class="music-header-detail">
+			<h3>{{ news.title }}</h3>
+		</div>
+		<div class="music-description-detail">
+			<span>{{ news.content }}</span>
+		</div>
+	</article>
+{% endblock content %}
