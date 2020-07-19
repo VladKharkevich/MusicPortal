@@ -2,28 +2,31 @@
 {% load static %}
 
 {% block content %}
-	<article class="music-content-article">
-		{% for band in bands %}
-			<a href="{{ band.get_absolute_url }}" class="vertical-card">
-				<div class="vertical-card-image">
-					<img src="
-						{% if band.photo %}
-							{{ band.photo.url }}
-						{% else %}
-							{% static 'img/default.png' %}
-						{% endif %}
-					">
-				</div>
-				<h3><span class="vertical-card-title">{{ band.title }}</span></h3>
-				<span class="vertical-card-description">{{ band.biography|truncatewords:50 }}</span>
-				<h5><span class="vertical-card-days-of-life">  
-					{{ band.date_of_creation }} - 
-					{% if band.date_of_breakup %}
-						{{ band.date_of_breakup }}
-					{% else %}	
-						the present
-				{% endif %} </span></h5>
-			</a>
-		{% endfor %}
+	<article class="article-with-paginator">
+		<div class="container-for-vertical-cards">
+			{% for band in page_obj %}
+				<a href="{{ band.get_absolute_url }}" class="vertical-card">
+					<div class="vertical-card-image">
+						<img src="
+							{% if band.photo %}
+								{{ band.photo.url }}
+							{% else %}
+								{% static 'img/default.png' %}
+							{% endif %}
+						">
+					</div>
+					<h3><span class="vertical-card-title">{{ band.title }}</span></h3>
+					<span class="vertical-card-description">{{ band.biography|truncatewords:50 }}</span>
+					<h5><span class="vertical-card-days-of-life">  
+						{{ band.date_of_creation }} - 
+						{% if band.date_of_breakup %}
+							{{ band.date_of_breakup }}
+						{% else %}	
+							the present
+					{% endif %} </span></h5>
+				</a>
+			{% endfor %}
+		</div>
+		{% include "music_portal/includes/paginator.html" %}
 	</article>
 {% endblock content %}

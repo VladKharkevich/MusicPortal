@@ -4,7 +4,7 @@
 	<article class="article-with-paginator">
 		<div>
 			<h1 style="text-align: center;">Songs</h1>
-			{% for song in page_object %}
+			{% for song in page_obj %}
 				{% include "music_portal/includes/song_card.html" %}
 			{% endfor %}
 		</div>

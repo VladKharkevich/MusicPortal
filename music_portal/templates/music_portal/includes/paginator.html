@@ -3,22 +3,24 @@
 		<ul class="paginator-list">
 			<!-- url Previous -->
 			<li class="paginator-item">
-				<a href="{{ prev_url }}" class="paginator-link {% if not prev_url %}
-					disabled
-				{% endif %}">Previous</a>
+				{% if page_obj.has_previous %}
+			        <a href="?page={{ page_obj.previous_page_number }}" class="paginator-link">Previous</a>
+			    {% else %}
+			        <a href="" class="paginator-link disabled">Previous</a>
+			    {% endif %}
 			</li>
 
 			<!-- url Previous -->
-			{% for page_number in page_object.paginator.page_range %}
+			{% for page_number in page_obj.paginator.page_range %}
 
 				<!-- if page number equals active page-->
-				{% if page_number == page_object.number %}
+				{% if page_number == page_obj.number %}
 					<li class="paginator-item">
 						<a href="?page={{ page_number }}" class="paginator-link active">{{ page_number }}</a>
 					</li>
 				
 				<!-- showing 2 previous pages, active page and 2 next pages-->
-				{% elif page_number > page_object.number|add:-3 and page_number < page_object.number|add:3 %}
+				{% elif page_number > page_obj.number|add:-3 and page_number < page_obj.number|add:3 %}
 					<li class="paginator-item">
 						<a href="?page={{ page_number }}" class="paginator-link">{{ page_number }}</a>
 					</li>
@@ -28,9 +30,11 @@
 
 			<!-- url Next -->
 			<li class="paginator-item">
-				<a href="{{ next_url }}" class="paginator-link {% if not next_url %}
-					disabled
-				{% endif %}">Next</a>
+				{% if page_obj.has_next %}
+			        <a href="?page={{ page_obj.next_page_number }}" class="paginator-link">Next</a>
+			    {% else %}
+			        <a href="" class="paginator-link disabled">Next</a>
+			    {% endif %}
 			</li>
 		</ul>
 	</nav>

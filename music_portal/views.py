@@ -1,104 +1,68 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import View
 
 from .models import News, Musician, MusicalInstrument, Song, Band
-from .utils import base_page_context, connecting_paginator
+from .utils import AdvancedListView, AdvancedDetailView, AdvancedTemplateView
 
 
-class AboutPage(View):
-    def get(self, request):
-        context = base_page_context()
-        return render(request, 'music_portal/about.html', context=context)
+class AboutPage(AdvancedTemplateView):
+    template_name = 'music_portal/about_page'
 
 
-class BandList(View):
-    def get(self, request):
-        context = base_page_context()
-        bands = Band.objects.all()
-        context['bands'] = bands
-        return render(request, 'music_portal/bands.html', context=context)
+class BandList(AdvancedListView):
+    template_name = 'music_portal/bands.html'
+    paginate_by = 12
+    model = Band
 
 
-class BandDetail(View):
-    def get(self, request, slug):
-        context = base_page_context()
-        obj = get_object_or_404(Band, slug__iexact=slug)
-        context[Band.__name__.lower()] = obj
-        return render(request, 'music_portal/band_detail.html', context=context)
+class BandDetail(AdvancedDetailView):
+    model = Band
 
 
-class ContactPage(View):
-    def get(self, request):
-        context = base_page_context()
-        return render(request, 'music_portal/contacts.html', context=context)
+class ContactPage(AdvancedTemplateView):
+    template_name = 'music_portal/contacts.html'   
 
 
-class MainPage(View):
-    def get(self, request):
-        context = base_page_context()
-        return render(request, 'music_portal/index.html', context=context)
+class MainPage(AdvancedTemplateView):
+    template_name = 'music_portal/index.html'
+    
+
+class MusicalInstrumentDetail(AdvancedDetailView):
+    model = MusicalInstrument
+    template_name = 'music_portal/musical_instrument_detail.html'
+    context_object_name = 'musical_instrument'
 
 
-class MusicalInstrumentDetail(View):
-    def get(self, request, slug):
-        context = base_page_context()
-        obj = get_object_or_404(MusicalInstrument, slug__iexact=slug)
-        context[MusicalInstrument.__name__] = obj
-        return render(request, 'music_portal/musical_instrument_detail.html', context=context)
+class MusicalInstrumentList(AdvancedListView):
+    template_name = 'music_portal/musical_instruments.html'
+    paginate_by = 12
+    model = MusicalInstrument
 
 
-class MusicalInstrumentList(View):
-    def get(self, request):
-        context = base_page_context()
-        musical_instruments = MusicalInstrument.objects.all()
-        paginator_context = connecting_paginator(request, musical_instruments, 3)
-        context = {**context, **paginator_context}
-        return render(request, 'music_portal/musical_instruments.html', context=context)
+class MusicianList(AdvancedListView):
+    template_name = 'music_portal/musicians.html'
+    paginate_by = 12
+    model = Musician
 
 
-class MusicianList(View):
-    def get(self, request):
-        context = base_page_context()
-        musicians = Musician.objects.all()
-        paginator_context = connecting_paginator(request, musicians, 3)
-        context = {**context, **paginator_context}
-        return render(request, 'music_portal/musicians.html', context=context)
+class MusicianDetail(AdvancedDetailView):
+    model = Musician
 
 
-class MusicianDetail(View):
-    def get(self, request, slug):
-        context = base_page_context()
-        obj = get_object_or_404(Musician, slug__iexact=slug)
-        context[Musician.__name__.lower()] = obj
-        return render(request, 'music_portal/musician_detail.html', context=context)
+class NewsList(AdvancedListView):
+    template_name = 'music_portal/news.html'
+    paginate_by = 2
+    model = News
 
 
-class NewsList(View):
-    def get(self, request):
-        context = base_page_context()
-        news = News.objects.all()
-
-        paginator_context = connecting_paginator(request, news, 3)
-        context = {**context, **paginator_context}
-        return render(request, 'music_portal/news.html', context=context)
+class PrivacyPage(AdvancedTemplateView):
+    template_name = 'music_portal/privacy.html'
 
 
-class PrivacyPage(View):
-    def get(self, request):
-        context = base_page_context()
-        return render(request, 'music_portal/privacy.html', context=context)
+class SongPage(AdvancedListView):
+    template_name = 'music_portal/songs.html'
+    paginate_by = 10
+    model = Song
 
 
-class SongPage(View):
-    def get(self, request):
-        context = base_page_context()
-        songs = Song.objects.all()
-        paginator_context = connecting_paginator(request, songs, 10)
-        context = {**context, **paginator_context}
-        return render(request, 'music_portal/songs.html', context=context)
-
-
-class UserTermsPage(View):
-    def get(self, request):
-        context = base_page_context()
-        return render(request, 'music_portal/user_terms.html', context=context)
+class UserTermsPage(AdvancedTemplateView):
+    template_name = 'music_portal/user_terms.html'

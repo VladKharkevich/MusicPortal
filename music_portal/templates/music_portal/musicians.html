@@ -4,7 +4,7 @@
 {% block content %}
 	<article class="article-with-paginator">
 		<div class="container-for-vertical-cards">
-			{% for musician in page_object %}
+			{% for musician in page_obj %}
 				<a href="{{ musician.get_absolute_url }}" class="vertical-card">
 					<div class="vertical-card-image">
 						<img src="{{ musician.photo.url }}">
