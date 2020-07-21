@@ -1,0 +1,11 @@
+{% extends "music_portal/base.html" %}
+
+{% block content %}
+	<article>
+		<div class="form-container">
+			<form action="{% url 'news_create_url' %}" method="post">
+				{% include "music_portal/includes/form_content.html" %}
+			</form>
+		</div>
+	</article>
+{% endblock content %}
