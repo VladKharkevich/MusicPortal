@@ -19,6 +19,10 @@ urlpatterns = [
          name='musical_instrument_create_url'),
     path('musical-instruments/<str:slug>/', MusicalInstrumentDetail.as_view(),
          name='musical_instrument_detail_url'),
+    path('musical-instruments/<str:slug>/update/', MusicalInstrumentUpdate.as_view(),
+         name='musical_instrument_update_url'),
+    path('musical-instruments/<str:slug>/delete/', MusicalInstrumentDelete.as_view(),
+         name='musical_instrument_delete_url'),
 
     path('musicians/', MusicianList.as_view(), name='musicians_page_url'),
     path('musicians/create/', MusicianCreate.as_view(), name='musician_create_url'),

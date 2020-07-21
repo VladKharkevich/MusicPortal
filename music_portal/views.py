@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import View
+from django.views.generic import View, CreateView, UpdateView, DeleteView
 
 from .forms import *
 from .models import News, Musician, MusicalInstrument, Song, Band
@@ -10,19 +10,9 @@ class AboutPage(AdvancedTemplateView):
     template_name = 'music_portal/about_page'
 
 
-class BandCreate(View):
-    def get(self, request):
-        form = BandCreateForm()
-        return render(request, 'music_portal/content_create/band_create.html', 
-                      context={'form': form})
-
-    def post(self, request):
-        bound_form = BandCreateForm(request.POST, request.FILES)
-        if bound_form.is_valid():
-            new_band = bound_form.save()
-            return redirect(new_band)
-        return render(request, 'music_portal/content_create/band_create.html', 
-                      context={'form': bound_form})
+class BandCreate(CreateView):
+    template_name = "music_portal/content_create/band_create.html"
+    form_class = BandCreateForm
 
 
 class BandDetail(AdvancedDetailView):
@@ -44,19 +34,9 @@ class MainPage(AdvancedTemplateView):
     template_name = 'music_portal/index.html'
     
 
-class MusicalInstrumentCreate(View):
-    def get(self, request):
-        form = MusicalInstrumentCreateForm()
-        return render(request, 'music_portal/content_create/musical_instrument_create.html', 
-                      context={'form': form})
-
-    def post(self, request):
-        bound_form = MusicalInstrumentCreateForm(request.POST, request.FILES)
-        if bound_form.is_valid():
-            new_musical_instrument = bound_form.save()
-            return redirect(new_musical_instrument)
-        return render(request, 'music_portal/content_create/musical_instrument_create.html', 
-                      context={'form': bound_form})
+class MusicalInstrumentCreate(CreateView):
+    template_name = "music_portal/content_create/musical_instrument_create.html"
+    form_class = MusicalInstrumentCreateForm
 
 
 class MusicalInstrumentDetail(AdvancedDetailView):
@@ -65,25 +45,27 @@ class MusicalInstrumentDetail(AdvancedDetailView):
     context_object_name = 'musical_instrument'
 
 
+class MusicalInstrumentDelete(DeleteView):
+    template_name = "music_portal/content_delete/musical_instrument_delete.html"
+    model = MusicalInstrument
+    success_url = '/'
+
+
 class MusicalInstrumentList(AdvancedListView):
     template_name = 'music_portal/content_list/musical_instruments.html'
     paginate_by = 12
     model = MusicalInstrument
 
 
-class MusicianCreate(View):
-    def get(self, request):
-        form = MusicianCreateForm()
-        return render(request, 'music_portal/content_create/musician_create.html', 
-                      context={'form': form})
+class MusicalInstrumentUpdate(UpdateView):
+    template_name = "music_portal/content_update/musical_instrument_update.html"
+    form_class = MusicalInstrumentCreateForm
+    model = MusicalInstrument
 
-    def post(self, request):
-        bound_form = MusicianCreateForm(request.POST, request.FILES)
-        if bound_form.is_valid():
-            new_musician = bound_form.save()
-            return redirect(new_musician)
-        return render(request, 'music_portal/content_create/musician_create.html', 
-                      context={'form': bound_form})
+
+class MusicianCreate(CreateView):
+    template_name = "music_portal/content_create/musician_create.html"
+    form_class = MusicianCreateForm
 
 
 class MusicianDetail(AdvancedDetailView):
@@ -97,17 +79,9 @@ class MusicianList(AdvancedListView):
     model = Musician
 
 
-class NewsCreate(View):
-    def get(self, request):
-        form = NewsCreateForm()
-        return render(request, 'music_portal/content_create/news_create.html', context={'form': form})
-
-    def post(self, request):
-        bound_form = NewsCreateForm(request.POST)
-        if bound_form.is_valid():
-            new_news = bound_form.save()
-            return redirect(new_news)
-        return render(request, 'music_portal/content_create/news_create.html', context={'form': bound_form})
+class NewsCreate(CreateView):
+    template_name = "music_portal/content_create/news_create.html"
+    form_class = NewsCreateForm
 
 
 class NewsDetail(AdvancedDetailView):
@@ -131,19 +105,9 @@ class SongPage(AdvancedListView):
     model = Song
 
 
-class SongCreate(View):
-    def get(self, request):
-        form = SongCreateForm()
-        return render(request, 'music_portal/content_create/song_create.html', 
-                      context={'form': form})
-
-    def post(self, request):
-        bound_form = SongCreateForm(request.POST, request.FILES)
-        if bound_form.is_valid():
-            new_song = bound_form.save()
-            return redirect(reverse('song_page_url'))
-        return render(request, 'music_portal/content_create/song_create.html', 
-                      context={'form': bound_form})
+class SongCreate(CreateView):
+    template_name = "music_portal/content_create/song_create.html"
+    form_class = SongCreateForm
 
 
 class UserTermsPage(AdvancedTemplateView):
