@@ -1,18 +1,22 @@
-from django.shortcuts import render, redirect
-from django.views.generic import View, CreateView, UpdateView, DeleteView
-
 from .forms import *
 from .models import News, Musician, MusicalInstrument, Song, Band
 from .utils import AdvancedListView, AdvancedDetailView, AdvancedTemplateView
+from .utils import AdvancedCreateView, AdvancedUpdateView, AdvancedDeleteView
 
 
 class AboutPage(AdvancedTemplateView):
     template_name = 'music_portal/about_page'
 
 
-class BandCreate(CreateView):
+class BandCreate(AdvancedCreateView):
     template_name = "music_portal/content_create/band_create.html"
-    form_class = BandCreateForm
+    form_class = BandForm
+
+
+class BandDelete(AdvancedDeleteView):
+    template_name = "music_portal/content_delete/band_delete.html"
+    model = Band
+    success_url = '/'
 
 
 class BandDetail(AdvancedDetailView):
@@ -26,6 +30,12 @@ class BandList(AdvancedListView):
     model = Band
 
 
+class BandUpdate(AdvancedUpdateView):
+    template_name = "music_portal/content_update/band_update.html"
+    form_class = BandForm
+    model = Band
+
+
 class ContactPage(AdvancedTemplateView):
     template_name = 'music_portal/contacts.html'   
 
@@ -34,9 +44,15 @@ class MainPage(AdvancedTemplateView):
     template_name = 'music_portal/index.html'
     
 
-class MusicalInstrumentCreate(CreateView):
+class MusicalInstrumentCreate(AdvancedCreateView):
     template_name = "music_portal/content_create/musical_instrument_create.html"
-    form_class = MusicalInstrumentCreateForm
+    form_class = MusicalInstrumentForm
+
+
+class MusicalInstrumentDelete(AdvancedDeleteView):
+    template_name = "music_portal/content_delete/musical_instrument_delete.html"
+    model = MusicalInstrument
+    success_url = '/'
 
 
 class MusicalInstrumentDetail(AdvancedDetailView):
@@ -45,27 +61,27 @@ class MusicalInstrumentDetail(AdvancedDetailView):
     context_object_name = 'musical_instrument'
 
 
-class MusicalInstrumentDelete(DeleteView):
-    template_name = "music_portal/content_delete/musical_instrument_delete.html"
-    model = MusicalInstrument
-    success_url = '/'
-
-
 class MusicalInstrumentList(AdvancedListView):
     template_name = 'music_portal/content_list/musical_instruments.html'
     paginate_by = 12
     model = MusicalInstrument
 
 
-class MusicalInstrumentUpdate(UpdateView):
+class MusicalInstrumentUpdate(AdvancedUpdateView):
     template_name = "music_portal/content_update/musical_instrument_update.html"
-    form_class = MusicalInstrumentCreateForm
+    form_class = MusicalInstrumentForm
     model = MusicalInstrument
 
 
-class MusicianCreate(CreateView):
+class MusicianCreate(AdvancedCreateView):
     template_name = "music_portal/content_create/musician_create.html"
-    form_class = MusicianCreateForm
+    form_class = MusicianForm
+
+
+class MusicianDelete(AdvancedDeleteView):
+    template_name = "music_portal/content_delete/musician_delete.html"
+    model = Musician
+    success_url = '/'
 
 
 class MusicianDetail(AdvancedDetailView):
@@ -79,9 +95,21 @@ class MusicianList(AdvancedListView):
     model = Musician
 
 
-class NewsCreate(CreateView):
+class MusicianUpdate(AdvancedUpdateView):
+    template_name = "music_portal/content_update/musician_update.html"
+    form_class = MusicianForm
+    model = Musician
+
+
+class NewsCreate(AdvancedCreateView):
     template_name = "music_portal/content_create/news_create.html"
-    form_class = NewsCreateForm
+    form_class = NewsForm
+
+
+class NewsDelete(AdvancedDeleteView):
+    model = News
+    template_name = 'music_portal/content_delete/news_delete.html'
+    success_url = '/'
 
 
 class NewsDetail(AdvancedDetailView):
@@ -95,8 +123,25 @@ class NewsList(AdvancedListView):
     model = News
 
 
+class NewsUpdate(AdvancedUpdateView):
+    model = News
+    form_class = NewsForm
+    template_name = 'music_portal/content_update/news_update.html'
+
+
 class PrivacyPage(AdvancedTemplateView):
     template_name = 'music_portal/privacy.html'
+
+
+class SongCreate(AdvancedCreateView):
+    template_name = "music_portal/content_create/song_create.html"
+    form_class = SongForm
+
+
+class SongDelete(AdvancedDeleteView):
+    model = Song
+    template_name = "music_portal/content_delete/song_delete.html"
+    success_url = '/'
 
 
 class SongPage(AdvancedListView):
@@ -105,9 +150,10 @@ class SongPage(AdvancedListView):
     model = Song
 
 
-class SongCreate(CreateView):
-    template_name = "music_portal/content_create/song_create.html"
-    form_class = SongCreateForm
+class SongUpdate(AdvancedUpdateView):
+    template_name = "music_portal/content_update/song_update.html"
+    form_class = SongForm
+    model = Song
 
 
 class UserTermsPage(AdvancedTemplateView):

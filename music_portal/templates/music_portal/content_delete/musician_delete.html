@@ -1,0 +1,14 @@
+{% extends "music_portal/base.html" %}
+
+{% block content %}
+	<article>
+		<div class="form-container">
+			<form action="{% url 'musician_delete_url' slug=musician.slug %}" method="post">
+				{% csrf_token %}
+				<h1>Are you sure you want to delete {{ musician.first_name|title }}?</h1>
+				<a href="{{ musician.get_absolute_url }}">Cancel</a>
+				<button type="submit">Delete</button>
+			</form>
+		</div>
+	</article>
+{% endblock content %}

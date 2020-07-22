@@ -1,0 +1,14 @@
+{% extends "music_portal/base.html" %}
+
+{% block content %}
+	<article>
+		<div class="form-container">
+			<form action="{% url 'band_delete_url' slug=band.slug %}" method="post">
+				{% csrf_token %}
+				<h1>Are you sure you want to delete {{ band.title|title }}?</h1>
+				<a href="{{ band.get_absolute_url }}">Cancel</a>
+				<button type="submit">Delete</button>
+			</form>
+		</div>
+	</article>
+{% endblock content %}

@@ -3,7 +3,7 @@ from .models import *
 from django.core.exceptions import ValidationError
 
 
-class BandCreateForm(forms.ModelForm):
+class BandForm(forms.ModelForm):
 
 	class Meta:
 		model = Band
@@ -17,7 +17,7 @@ class BandCreateForm(forms.ModelForm):
 			'date_of_breakup': forms.NumberInput(attrs={'class': ''}),
 			'photo': forms.FileInput(attrs={'class': ''}),
 			'members': forms.SelectMultiple(),
-			'songs': forms.SelectMultiple()
+			'songs': forms.SelectMultiple(),
 		}
 
 	def clean_slug(self):
@@ -29,7 +29,7 @@ class BandCreateForm(forms.ModelForm):
 		return new_slug
 
 
-class MusicianCreateForm(forms.ModelForm):
+class MusicianForm(forms.ModelForm):
 
 	class Meta:
 		model = Musician
@@ -55,7 +55,7 @@ class MusicianCreateForm(forms.ModelForm):
 		return new_slug
 
 
-class MusicalInstrumentCreateForm(forms.ModelForm):
+class MusicalInstrumentForm(forms.ModelForm):
 
 	class Meta:
 		model = MusicalInstrument
@@ -77,7 +77,7 @@ class MusicalInstrumentCreateForm(forms.ModelForm):
 		return new_slug
 
 
-class NewsCreateForm(forms.ModelForm):
+class NewsForm(forms.ModelForm):
 
 	class Meta:
 		model = News
@@ -97,7 +97,7 @@ class NewsCreateForm(forms.ModelForm):
 		return new_slug
 
 
-class SongCreateForm(forms.ModelForm):
+class SongForm(forms.ModelForm):
 
 	class Meta:
 		model = Song
@@ -117,5 +117,3 @@ class SongCreateForm(forms.ModelForm):
 		if News.objects.filter(slug__iexact=new_slug).count():
 			raise ValidationError(f"Slug must be unique. We have '{new_slug}' slug already")
 		return new_slug
-
-

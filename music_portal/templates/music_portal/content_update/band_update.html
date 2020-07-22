@@ -1,0 +1,11 @@
+{% extends "music_portal/base.html" %}
+
+{% block content %}
+	<article>
+		<div class="form-container">
+			<form action="{% url 'band_update_url' slug=band.slug %}" method="post" enctype="multipart/form-data">
+				{% include "music_portal/includes/form_content.html" %}
+			</form>
+		</div>
+	</article>
+{% endblock content %}
