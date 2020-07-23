@@ -1,3 +1,4 @@
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
 from .views import *
@@ -6,6 +7,8 @@ from .views import *
 urlpatterns = [
     path('', MainPage.as_view(), name='main_page_url'),
     path('about/', AboutPage.as_view(), name='about_page_url'),
+    path('accounts/login/', LoginView.as_view(), name='login'),
+    path('accounts/logout/', LogoutView.as_view(), name='logout'),
 
     path('bands/', BandList.as_view(), name='bands_url'),
     path('bands/create/', BandCreate.as_view(), name='band_create_url'),

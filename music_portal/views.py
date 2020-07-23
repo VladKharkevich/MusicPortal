@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .forms import *
 from .models import News, Musician, MusicalInstrument, Song, Band
 from .utils import AdvancedListView, AdvancedDetailView, AdvancedTemplateView
@@ -8,15 +10,17 @@ class AboutPage(AdvancedTemplateView):
     template_name = 'music_portal/about_page'
 
 
-class BandCreate(AdvancedCreateView):
+class BandCreate(LoginRequiredMixin, AdvancedCreateView):
     template_name = "music_portal/content_create/band_create.html"
     form_class = BandForm
+    raise_exception = True
 
 
-class BandDelete(AdvancedDeleteView):
+class BandDelete(LoginRequiredMixin, AdvancedDeleteView):
     template_name = "music_portal/content_delete/band_delete.html"
     model = Band
     success_url = '/'
+    raise_exception = True
 
 
 class BandDetail(AdvancedDetailView):
@@ -30,10 +34,11 @@ class BandList(AdvancedListView):
     model = Band
 
 
-class BandUpdate(AdvancedUpdateView):
+class BandUpdate(LoginRequiredMixin, AdvancedUpdateView):
     template_name = "music_portal/content_update/band_update.html"
     form_class = BandForm
     model = Band
+    raise_exception = True
 
 
 class ContactPage(AdvancedTemplateView):
@@ -44,15 +49,17 @@ class MainPage(AdvancedTemplateView):
     template_name = 'music_portal/index.html'
     
 
-class MusicalInstrumentCreate(AdvancedCreateView):
+class MusicalInstrumentCreate(LoginRequiredMixin, AdvancedCreateView):
     template_name = "music_portal/content_create/musical_instrument_create.html"
     form_class = MusicalInstrumentForm
+    raise_exception = True
 
 
-class MusicalInstrumentDelete(AdvancedDeleteView):
+class MusicalInstrumentDelete(LoginRequiredMixin, AdvancedDeleteView):
     template_name = "music_portal/content_delete/musical_instrument_delete.html"
     model = MusicalInstrument
     success_url = '/'
+    raise_exception = True
 
 
 class MusicalInstrumentDetail(AdvancedDetailView):
@@ -67,21 +74,24 @@ class MusicalInstrumentList(AdvancedListView):
     model = MusicalInstrument
 
 
-class MusicalInstrumentUpdate(AdvancedUpdateView):
+class MusicalInstrumentUpdate(LoginRequiredMixin, AdvancedUpdateView):
     template_name = "music_portal/content_update/musical_instrument_update.html"
     form_class = MusicalInstrumentForm
     model = MusicalInstrument
+    raise_exception = True
 
 
-class MusicianCreate(AdvancedCreateView):
+class MusicianCreate(LoginRequiredMixin, AdvancedCreateView):
     template_name = "music_portal/content_create/musician_create.html"
     form_class = MusicianForm
+    raise_exception = True
 
 
-class MusicianDelete(AdvancedDeleteView):
+class MusicianDelete(LoginRequiredMixin, AdvancedDeleteView):
     template_name = "music_portal/content_delete/musician_delete.html"
     model = Musician
     success_url = '/'
+    raise_exception = True
 
 
 class MusicianDetail(AdvancedDetailView):
@@ -95,18 +105,20 @@ class MusicianList(AdvancedListView):
     model = Musician
 
 
-class MusicianUpdate(AdvancedUpdateView):
+class MusicianUpdate(LoginRequiredMixin, AdvancedUpdateView):
     template_name = "music_portal/content_update/musician_update.html"
     form_class = MusicianForm
     model = Musician
+    raise_exception = True
 
 
-class NewsCreate(AdvancedCreateView):
+class NewsCreate(LoginRequiredMixin, AdvancedCreateView):
     template_name = "music_portal/content_create/news_create.html"
     form_class = NewsForm
+    raise_exception = True
 
 
-class NewsDelete(AdvancedDeleteView):
+class NewsDelete(LoginRequiredMixin, AdvancedDeleteView):
     model = News
     template_name = 'music_portal/content_delete/news_delete.html'
     success_url = '/'
@@ -123,25 +135,28 @@ class NewsList(AdvancedListView):
     model = News
 
 
-class NewsUpdate(AdvancedUpdateView):
+class NewsUpdate(LoginRequiredMixin, AdvancedUpdateView):
     model = News
     form_class = NewsForm
     template_name = 'music_portal/content_update/news_update.html'
+    raise_exception = True
 
 
 class PrivacyPage(AdvancedTemplateView):
     template_name = 'music_portal/privacy.html'
 
 
-class SongCreate(AdvancedCreateView):
+class SongCreate(LoginRequiredMixin, AdvancedCreateView):
     template_name = "music_portal/content_create/song_create.html"
     form_class = SongForm
+    raise_exception = True
 
 
-class SongDelete(AdvancedDeleteView):
+class SongDelete(LoginRequiredMixin, AdvancedDeleteView):
     model = Song
     template_name = "music_portal/content_delete/song_delete.html"
     success_url = '/'
+    raise_exception = True
 
 
 class SongPage(AdvancedListView):
@@ -150,10 +165,11 @@ class SongPage(AdvancedListView):
     model = Song
 
 
-class SongUpdate(AdvancedUpdateView):
+class SongUpdate(LoginRequiredMixin, AdvancedUpdateView):
     template_name = "music_portal/content_update/song_update.html"
     form_class = SongForm
     model = Song
+    raise_exception = True
 
 
 class UserTermsPage(AdvancedTemplateView):

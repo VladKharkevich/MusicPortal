@@ -5,9 +5,11 @@
 		<div class="form-container">
 			<form action="{% url 'musician_delete_url' slug=musician.slug %}" method="post">
 				{% csrf_token %}
-				<h1>Are you sure you want to delete {{ musician.first_name|title }}?</h1>
-				<a href="{{ musician.get_absolute_url }}">Cancel</a>
-				<button type="submit">Delete</button>
+				<h1>Are you sure you want to delete {{ musician.first_name|title }} {{ musician.last_name|title }}?</h1>
+				<div class="container-no-yes">
+					<a href="{{ musician.get_absolute_url }}" class="btn-cancel">Cancel</a>
+					<button type="submit" class="submit-form">Delete</button>
+				</div>
 			</form>
 		</div>
 	</article>

@@ -1,0 +1,12 @@
+{% extends "music_portal/base.html" %}
+
+{% block content %}
+	<h2><p>Bxoд</p></h2>
+	{% if user.is_authenticated %}
+		<p>Вы уже выполнили вход.</p>
+	{% else %}
+		<form method="post">
+			{% include "music_portal/includes/form_content.html" %}
+		</form>
+	{% endif %}
+{% endblock %}

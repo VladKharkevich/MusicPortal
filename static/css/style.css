@@ -64,6 +64,12 @@ section{
 	margin: 3px;
 }
 
+.ad-block img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 footer{
 	display: flex;
 	background-color: lime;
@@ -228,27 +234,28 @@ footer{
 	margin: 12px 6px; 
 }
 
-.form-textinput{
+.form-control[type=text], .form-control[type=number]{
 	width: calc(100% - 6px);
 	height: 24px;
 	font-size: 21px;
 	padding-left: 2px; 
 }
 
-.form-textinput:focus{
+.form-control[type=text]:focus, .form-control[type=number]:focus{
 	outline: none !important;
 	border: 1px solid blue;
 	box-shadow: 0px 1px 5px #719ECE;
 }
 
-.form-textarea{
+textarea.form-control{
 	font-size: 21px;
 	padding-left: 2px;
 	max-width: 800px;
-	min-width: 270px; 
+	min-width: 270px;
+	min-height: 120px; 
 }
 
-.form-textarea:focus{
+textarea.form-control:focus{
 	outline: none !important;
 	border: 1px solid blue;
 	box-shadow: 0px 1px 5px #719ECE;
@@ -270,6 +277,28 @@ footer{
 
 .submit-form:hover{
 	cursor: pointer;
+}
+
+.btn-cancel{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: gray;
+	color: white; 
+	text-decoration: none;
+	padding: 0px;
+	border-radius: 20px;
+	height: 40px;
+	width: 115px; 
+	font-weight: bold;
+	font-size: 22px;
+	position: relative;
+	right: calc(-50% + 125px);
+}
+
+.container-no-yes{
+	display: flex;
+	margin-top: 10px;
 }
 
 /* news.html */

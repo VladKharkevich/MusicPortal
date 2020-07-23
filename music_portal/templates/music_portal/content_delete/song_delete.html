@@ -6,8 +6,10 @@
 			<form action="{% url 'song_delete_url' slug=song.slug %}" method="post">
 				{% csrf_token %}
 				<h1>Are you sure you want to delete {{ song.title|title }}?</h1>
-				<a href="{{ song.get_absolute_url }}">Cancel</a>
-				<button type="submit">Delete</button>
+				<div class="container-no-yes">
+					<a href="{{ musician.get_absolute_url }}" class="btn-cancel">Cancel</a>
+					<button type="submit" class="submit-form">Delete</button>
+				</div>
 			</form>
 		</div>
 	</article>

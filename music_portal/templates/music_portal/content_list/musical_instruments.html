@@ -10,7 +10,7 @@
 					<div class="vertical-card-image">
 						<img src="{{ musical_instrument.photo.url }}">
 					</div>
-					<h3><span class="vertical-card-title">{{ musical_instrument.name }}</span></h3>
+					<h3><span class="vertical-card-title">{{ musical_instrument.name|title }}</span></h3>
 					<span class="vertical-card-description">{{ musical_instrument.description|truncatewords:50 }}</span>
 				</a>
 			{% endfor %}

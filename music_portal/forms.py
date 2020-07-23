@@ -10,12 +10,12 @@ class BandForm(forms.ModelForm):
 		fields = ['title', 'slug', 'biography', 'date_of_creation', 'date_of_breakup',
 		          'photo', 'members', 'songs']
 		widgets = {
-			'title': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'slug': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'biography': forms.Textarea(attrs={'class': 'form-textarea'}),
-			'date_of_creation': forms.NumberInput(attrs={'class': ''}),
-			'date_of_breakup': forms.NumberInput(attrs={'class': ''}),
-			'photo': forms.FileInput(attrs={'class': ''}),
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'slug': forms.TextInput(attrs={'class': 'form-control'}),
+			'biography': forms.Textarea(attrs={'class': 'form-control'}),
+			'date_of_creation': forms.NumberInput(attrs={'class': 'form-control'}),
+			'date_of_breakup': forms.NumberInput(attrs={'class': 'form-control'}),
+			'photo': forms.FileInput(attrs={'class': 'form-control'}),
 			'members': forms.SelectMultiple(),
 			'songs': forms.SelectMultiple(),
 		}
@@ -36,13 +36,13 @@ class MusicianForm(forms.ModelForm):
 		fields = ['first_name', 'last_name', 'slug', 'biography', 'date_of_birth',
 		          'date_of_death', 'photo', 'songs']
 		widgets = {
-			'first_name': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'last_name': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'slug': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'biography': forms.Textarea(attrs={'class': 'form-textarea'}),
-			'date_of_birth': forms.DateInput(attrs={'class': ''}),
-			'date_of_death': forms.DateInput(attrs={'class': ''}),
-			'photo': forms.FileInput(attrs={'class': ''}),
+			'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+			'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+			'slug': forms.TextInput(attrs={'class': 'form-control'}),
+			'biography': forms.Textarea(attrs={'class': 'form-control'}),
+			'date_of_birth': forms.DateInput(attrs={'class': 'form-control'}),
+			'date_of_death': forms.DateInput(attrs={'class': 'form-control'}),
+			'photo': forms.FileInput(attrs={'class': 'form-control'}),
 			'songs': forms.SelectMultiple()
 		}
 
@@ -61,11 +61,11 @@ class MusicalInstrumentForm(forms.ModelForm):
 		model = MusicalInstrument
 		fields = ['name', 'slug', 'description', 'photo', 'type_of_instrument']
 		widgets = {
-			'title': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'slug': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'description': forms.Textarea(attrs={'class': 'form-textarea'}),
-			'type_of_instrument': forms.Select(attrs={'class': ''}),
-			'photo': forms.FileInput(attrs={'class': ''}),
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'slug': forms.TextInput(attrs={'class': 'form-control'}),
+			'description': forms.Textarea(attrs={'class': 'form-control'}),
+			'type_of_instrument': forms.Select(attrs={'class': 'form-control'}),
+			'photo': forms.FileInput(attrs={'class': 'form-control'}),
 		}
 
 	def clean_slug(self):
@@ -83,9 +83,9 @@ class NewsForm(forms.ModelForm):
 		model = News
 		fields = ['title', 'slug', 'content']
 		widgets = {
-			'title': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'slug': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'content': forms.Textarea(attrs={'class': 'form-textarea'}),
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'slug': forms.TextInput(attrs={'class': 'form-control'}),
+			'content': forms.Textarea(attrs={'class': 'form-control'}),
 		}
 
 	def clean_slug(self):
@@ -103,11 +103,11 @@ class SongForm(forms.ModelForm):
 		model = Song
 		fields = ['title', 'slug', 'album', 'songfile', 'year_of_creation']
 		widgets = {
-			'title': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'slug': forms.TextInput(attrs={'class': 'form-textinput'}),
-			'album': forms.Select(attrs={'class': ''}),
-			'year_of_creation': forms.NumberInput(attrs={'class': ''}),
-			'songfile': forms.FileInput(attrs={'class': ''}),
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'slug': forms.TextInput(attrs={'class': 'form-control'}),
+			'album': forms.Select(attrs={'class': 'form-control'}),
+			'year_of_creation': forms.NumberInput(attrs={'class': 'form-control'}),
+			'songfile': forms.FileInput(attrs={'class': 'form-control'}),
 		}
 
 	def clean_slug(self):
